@@ -1,0 +1,102 @@
+<div class="row"> {{!-- Creacion de la fila --}}
+
+
+    <div class="col-md-4"> {{!-- Creacion de la columna --}}
+
+        <div class="card"> {{!-- Creacion de la tarjeta --}}
+
+            <div class="card-body"> {{!-- card-body --}}
+
+                <form action="/images/add" method="POST" enctype="multipart/form-data"> {{!-- Creacion del formulario --}}
+
+
+                    <div class="form-group">
+
+                        <input type="text" name="title" class="form-control" placeholder="Image Title">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <textarea name="description" class="form-control" placeholder="Image Description"></textarea>
+
+                    </div>
+
+
+                    <div class="input-group mb-3">
+
+                        <div class="custom-file">
+
+                            <input type="file" name="image" class="custom-file-input" id="inputGroupFile01">
+
+                            <label for="inputGroupFile01" class="custom-file-label">Choose File</label>
+                        </div>
+
+                    </div>
+
+
+                    <button class="btn btn-primary">
+                        Upload Photo
+                    </button>
+
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="col-md-8"> {{!-- Creacion de la columna --}}
+
+        <table class="table"> {{!-- Creacion de la tabla --}}
+
+
+            <thead> {{!-- Cabeza de la tabla --}}
+
+                <tr> {{!-- Creacion de la fila con tres cabeceras--}}
+
+                    <th>Title</th>
+
+                    <th>Description</th>
+
+                    <th>Operations</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody> {{!-- Cuerpo de la tabla --}}
+
+                {{#each photos}}
+
+                <tr>
+
+                    <td>{{title}}</td>
+
+                    <td>{{description}}</td>
+
+                    <td>
+
+                        <a href="{{imageURL}}" target="_blank" class="btn btn-primary">View</a>
+
+                        <a href="/images/delete/{{_id}}" class="btn btn-danger">Delete</a> {{!-- _id: MongoDB --}}
+                    </td>
+
+                </tr>
+
+                {{/each}}
+
+            </tbody>
+
+
+        </table>
+
+    </div>
+
+
+</div>
